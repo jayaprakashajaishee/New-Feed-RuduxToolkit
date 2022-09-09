@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+
+:root {
+  --primary: #2666CF;
+  --font-dark: #F5F2E7;
+  --font-light: black;
+  --light-backGround: white;
+  --dark-backGround: #2C3333;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Oxygen', sans-serif;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dark {
+  background-color: var(--dark-backGround);
+  color: var(--font-dark);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.light {
+  background-color: var(--light-backGround);
+  color: var(--font-light);
+
+}
+
+/* Navbar */
+.navbar {
+
+  height: 50px;
+  background-color: var(--primary);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--font-dark);
 }
 
-.App-link {
-  color: #61dafb;
+.sourceCard {
+  height: 30px;
+  width: 90%;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sourceCard:hover {
+  background-color: var(--primary);
+  color: var(--font-dark);
 }

@@ -1,10 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Navbar from "./component/Navbar/Navbar";
+import Sources from "./component/Sources/Sources";
+import LargeScreenContainer from "./component/container/LargeScreenContainer";
 
 function App() {
   return (
     <div>
-      hello world
+      <Navbar />
+      <LargeScreenContainer source={<Sources />} />
     </div>
   );
 }
