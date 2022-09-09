@@ -1,8 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function LargeScreenContainer({ source }) {
+  const theme = useSelector((state) => state.theme);
   return (
-    <div style={{ display: "flex", height: "calc(100vh - 50px)" }}>
+    <div
+      style={{ display: "flex", height: "calc(100vh - 50px)" }}
+      className={theme}
+    >
       <div
         style={{
           width: "calc(100% / 4)",

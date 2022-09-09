@@ -3,13 +3,14 @@ import {
   SOURCE_REQUEST,
   SOURCE_SUCCESS,
   SOURCE_FAIL,
+  CHANGE_THEME,
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
   dispatch({ type: SOURCE_REQUEST });
   var config = {
     method: "get",
-    url: "https://newsapi.org/v2/top-headlines/sources?apiKey=47bbe568e58b490887d7d76ca92c807e",
+    url: `${process.env.REACT_APP_SOURCES_API}?apiKey=${process.env.REACT_APP_API_KEY}`,
     headers: {},
   };
 
@@ -22,4 +23,8 @@ const getSources = () => (dispatch) => {
     });
 };
 
-export { getSources };
+const themeChange = () => (dispatch) => {
+  dispatch({ type: CHANGE_THEME });
+};
+
+export { getSources, themeChange };
