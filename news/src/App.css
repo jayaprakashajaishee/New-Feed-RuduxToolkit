@@ -53,3 +53,46 @@ body {
   background-color: var(--primary);
   color: var(--font-dark);
 }
+
+
+/* ======= scroll bar css ======= */
+
+/* width */
+.light ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.light ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  margin-top: 2px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+/* Handle */
+.light ::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+
+
+/* width */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.dark ::-webkit-scrollbar-track {
+  background: #395B64;
+  margin-top: 2px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+/* Handle */
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
