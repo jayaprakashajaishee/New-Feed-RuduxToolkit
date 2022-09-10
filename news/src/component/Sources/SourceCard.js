@@ -1,7 +1,7 @@
 import React from "react";
 
 function SourceCard({ source }) {
-  return <div className="sourceCard light">{source}</div>;
+  return <div className="sourceCard">{source}</div>;
 }
 
 export default SourceCard;
