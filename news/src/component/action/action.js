@@ -4,6 +4,7 @@ import {
   SOURCE_SUCCESS,
   SOURCE_FAIL,
   CHANGE_THEME,
+  SOURCE_FAV,
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
@@ -16,15 +17,21 @@ const getSources = () => (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      dispatch({ type: SOURCE_SUCCESS, payload: response.data.sources });
+      let sources = response.data.sources.map((source, i) => {
+        return { ...source, fav: false, selected: false };
+      });
+      dispatch({ type: SOURCE_SUCCESS, payload: sources });
     })
     .catch(function (error) {
       dispatch({ type: SOURCE_FAIL, payload: error });
     });
 };
 
+const sourceFav = (id) => (dispatch) =>
+  dispatch({ type: SOURCE_FAV, payload: id });
+
 const themeChange = () => (dispatch) => {
   dispatch({ type: CHANGE_THEME });
 };
 
-export { getSources, themeChange };
+export { getSources, themeChange, sourceFav };

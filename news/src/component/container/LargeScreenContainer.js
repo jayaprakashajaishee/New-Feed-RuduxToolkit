@@ -10,7 +10,7 @@ function LargeScreenContainer({ source }) {
     >
       <div
         style={{
-          width: "calc(100% / 4)",
+          width: "calc(100% / 5)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
