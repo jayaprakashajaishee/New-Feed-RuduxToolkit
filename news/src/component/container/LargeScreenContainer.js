@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Sources from "../Sources/Sources";
+import FavouriteSources from "../FavouriteSources/FavouriteSources";
 
-function LargeScreenContainer({ source }) {
+function LargeScreenContainer() {
   const theme = useSelector((state) => state.theme);
   return (
     <div
@@ -17,7 +19,8 @@ function LargeScreenContainer({ source }) {
           overflow: "auto",
         }}
       >
-        {source}
+        <Sources />
+        <FavouriteSources />
       </div>
     </div>
   );
