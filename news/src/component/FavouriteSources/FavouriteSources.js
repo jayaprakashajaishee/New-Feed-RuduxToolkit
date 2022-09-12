@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FavouriteCard from "./FavouriteCard";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -7,16 +7,20 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocalStorage } from "react-use";
 
 function FavouriteSources() {
+  const [favIds, setFavIds] = useLocalStorage("news-feed-favIds", []);
   const [favOpen, setFavOpen] = useState(false);
   const handleOpen = () => setFavOpen((prev) => !prev);
 
   const Sources = useSelector((state) => state.sources);
   const { loading, error, sources } = Sources;
   const favSources = sources && sources.filter((source) => source.fav);
-  const dispatch = useDispatch();
-  console.log(sources);
+
+  useEffect(() => {
+    sources && setFavIds(favSources.map((fav) => fav.id));
+  }, [sources]);
 
   return loading ? (
     <div>Loading...</div>

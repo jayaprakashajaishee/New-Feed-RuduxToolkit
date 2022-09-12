@@ -8,6 +8,7 @@ import {
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
+  let favIds = JSON.parse(localStorage.getItem("news-feed-favIds"));
   dispatch({ type: SOURCE_REQUEST });
   var config = {
     method: "get",
@@ -20,7 +21,12 @@ const getSources = () => (dispatch) => {
       let sources = response.data.sources.map((source, i) => {
         return { ...source, fav: false, selected: false };
       });
-      dispatch({ type: SOURCE_SUCCESS, payload: sources });
+      dispatch({
+        type: SOURCE_SUCCESS,
+        payload: sources.map((source) =>
+          favIds.includes(source.id) ? { ...source, fav: true } : source
+        ),
+      });
     })
     .catch(function (error) {
       dispatch({ type: SOURCE_FAIL, payload: error });
