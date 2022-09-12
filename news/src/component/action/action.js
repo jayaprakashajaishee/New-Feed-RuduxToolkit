@@ -3,8 +3,9 @@ import {
   SOURCE_REQUEST,
   SOURCE_SUCCESS,
   SOURCE_FAIL,
-  CHANGE_THEME,
   SOURCE_FAV,
+  SOURCE_SELECT,
+  CHANGE_THEME,
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
@@ -40,4 +41,24 @@ const themeChange = () => (dispatch) => {
   dispatch({ type: CHANGE_THEME });
 };
 
-export { getSources, themeChange, sourceFav };
+const selectSource = (id) => (dispatch) => {
+  dispatch({ type: SOURCE_SELECT, payload: id });
+
+  var axios = require("axios");
+
+  var config = {
+    method: "get",
+    url: `https://newsapi.org/v2/top-headlines?apiKey=${process.env.REACT_APP_API_KEY}&sources=${id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export { getSources, themeChange, sourceFav, selectSource };

@@ -3,6 +3,7 @@ import {
   SOURCE_FAIL,
   SOURCE_SUCCESS,
   SOURCE_FAV,
+  SOURCE_SELECT,
 } from "../constants/constants";
 
 function sourceReducer(state = {}, action) {
@@ -24,6 +25,15 @@ function sourceReducer(state = {}, action) {
             };
           }),
         ],
+      };
+    case SOURCE_SELECT:
+      return {
+        ...state,
+        sources: state.sources.map((source) =>
+          source.id === action.payload
+            ? { ...source, selected: true }
+            : { ...source, selected: false }
+        ),
       };
     default:
       return state;

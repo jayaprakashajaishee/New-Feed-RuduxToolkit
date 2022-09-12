@@ -3,13 +3,28 @@ import { useSelector, useDispatch } from "react-redux";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { sourceFav } from "../action/action";
+import { selectSource } from "../action/action";
 
-function FavouriteCard({ source, id }) {
+function FavouriteCard({ source, id, selected }) {
   const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   return (
-    <div className="sourceCard">
-      <p>{source}</p>
+    <div
+      className="sourceCard"
+      style={{ backgroundColor: selected && "#2666CF" }}
+    >
+      <div
+        onClick={() => dispatch(selectSource(id))}
+        style={{
+          marginLeft: "5px",
+          height: "35px",
+          display: "flex",
+          alignItems: "center",
+          width: "90%",
+        }}
+      >
+        <p>{source}</p>
+      </div>
       <IconButton
         onClick={() => dispatch(sourceFav(id))}
         variant="contained"

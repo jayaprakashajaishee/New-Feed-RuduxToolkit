@@ -8,22 +8,23 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocalStorage } from "react-use";
+import { Skeleton } from "@mui/material";
 
 function FavouriteSources() {
   const [favIds, setFavIds] = useLocalStorage("news-feed-favIds", []);
   const [favOpen, setFavOpen] = useState(false);
   const handleOpen = () => setFavOpen((prev) => !prev);
-
   const Sources = useSelector((state) => state.sources);
   const { loading, error, sources } = Sources;
   const favSources = sources && sources.filter((source) => source.fav);
-
   useEffect(() => {
     sources && setFavIds(favSources.map((fav) => fav.id));
   }, [sources]);
 
   return loading ? (
-    <div>Loading...</div>
+    <div>
+      <Skeleton height={50} width={300} animation={"pulse"} />
+    </div>
   ) : error ? (
     <div>Error...</div>
   ) : (
@@ -43,14 +44,16 @@ function FavouriteSources() {
               alignItems: "center",
             }}
           >
-            {favSources.map((source, i) => (
-              <FavouriteCard
-                source={source.name}
-                //fav={source.fav}
-                id={source.id}
-                key={i}
-              />
-            ))}
+            {sources
+              .filter((source) => favIds.includes(source.id))
+              .map((source, i) => (
+                <FavouriteCard
+                  source={source.name}
+                  id={source.id}
+                  selected={source.selected}
+                  key={i}
+                />
+              ))}
           </List>
         </Collapse>
       </List>

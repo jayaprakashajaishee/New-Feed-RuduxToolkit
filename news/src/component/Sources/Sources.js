@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import { Skeleton } from "@mui/material";
 
 function Sources() {
   const [sourceOpen, setSourceOpen] = useState(false);
@@ -22,7 +23,9 @@ function Sources() {
   }, [dispatch]);
 
   return loading ? (
-    <div>loading...</div>
+    <div>
+      <Skeleton height={50} width={300} animation={"pulse"} />
+    </div>
   ) : error ? (
     <div>Error</div>
   ) : (
@@ -42,7 +45,13 @@ function Sources() {
             }}
           >
             {sources.map((source, i) => (
-              <SourceCard source={source.name} fav={source.fav} id={source.id} key={i} />
+              <SourceCard
+                source={source.name}
+                fav={source.fav}
+                id={source.id}
+                selected={source.selected}
+                key={i}
+              />
             ))}
           </List>
         </Collapse>
