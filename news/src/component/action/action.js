@@ -9,6 +9,7 @@ import {
   HEADLINE_REQUEST,
   HEADLINE_REQUEST_SUCCESS,
   HEADLINE_REQUEST_FAIL,
+  HEADLINE_SELECT,
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
@@ -58,10 +59,18 @@ const selectSource = (id, name) => (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      //console.log(JSON.stringify(response.data));
       dispatch({
         type: HEADLINE_REQUEST_SUCCESS,
-        payload: { ...response.data, name },
+        payload: {
+          ...response.data,
+          name,
+          articles: [
+            ...response.data.articles.map((article) => {
+              return { ...article, selected: false };
+            }),
+          ],
+        },
       });
     })
     .catch(function (error) {
@@ -70,4 +79,8 @@ const selectSource = (id, name) => (dispatch) => {
     });
 };
 
-export { getSources, themeChange, sourceFav, selectSource };
+const selectHeadline = (title) => (dispatch) => {
+  dispatch({ type: HEADLINE_SELECT, payload: title });
+};
+
+export { getSources, themeChange, sourceFav, selectSource, selectHeadline };

@@ -34,7 +34,7 @@ function Headlines() {
           }}
         >
           {headlines.articles.map((headline, i) => (
-            <HeadlineCard headlines={headline} key={i} />
+            <HeadlineCard headline={headline} key={i} />
           ))}
         </div>
       </div>
