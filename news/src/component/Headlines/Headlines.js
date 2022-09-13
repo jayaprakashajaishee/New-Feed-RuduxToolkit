@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import HeadlineCard from "./HeadlineCard";
-import CircularProgress from "@mui/material/CircularProgress";
 import LoadingCircle from "../Loading/LoadingCircle";
 
 function Headlines() {
