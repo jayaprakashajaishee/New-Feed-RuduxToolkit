@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { sourceFav } from "../action/action";
+import { motion } from "framer-motion";
 import { selectSource } from "../action/action";
 
 function FavouriteCard({ source, id, selected }) {
   const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 1 }}
       className="sourceCard"
       style={{ backgroundColor: selected && "#2666CF" }}
     >
@@ -36,7 +39,7 @@ function FavouriteCard({ source, id, selected }) {
       >
         <DeleteIcon />
       </IconButton>
-    </div>
+    </motion.div>
   );
 }
 

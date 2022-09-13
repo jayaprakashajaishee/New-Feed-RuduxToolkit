@@ -5,11 +5,14 @@ import StarIcon from "@mui/icons-material/Star";
 import { useDispatch } from "react-redux";
 import { sourceFav } from "../action/action";
 import { selectSource } from "../action/action";
+import { motion } from "framer-motion";
 
 function SourceCard({ source, fav, id, selected }) {
   const dispatch = useDispatch();
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{scale: 1}}
       className="sourceCard"
       style={{ backgroundColor: selected && "#2666CF" }}
     >
@@ -31,7 +34,7 @@ function SourceCard({ source, fav, id, selected }) {
         checked={fav}
         onChange={() => dispatch(sourceFav(id))}
       />
-    </div>
+    </motion.div>
   );
 }
 

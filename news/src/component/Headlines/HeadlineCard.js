@@ -1,10 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { selectHeadline } from "../action/action";
+import { motion } from "framer-motion";
+
 function HeadlineCard({ headline }) {
   const dispatch = useDispatch();
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 1 }}
       onClick={() => dispatch(selectHeadline(headline.title))}
       className="sourceCard"
       style={{
@@ -19,7 +23,7 @@ function HeadlineCard({ headline }) {
         loading="loading"
       />
       <p style={{ marginLeft: "10px", width: "50%" }}>{headline.title}</p>
-    </div>
+    </motion.div>
   );
 }
 
