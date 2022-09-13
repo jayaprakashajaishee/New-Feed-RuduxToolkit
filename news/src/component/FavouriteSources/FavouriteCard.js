@@ -14,7 +14,7 @@ function FavouriteCard({ source, id, selected }) {
       style={{ backgroundColor: selected && "#2666CF" }}
     >
       <div
-        onClick={() => dispatch(selectSource(id))}
+        onClick={() => dispatch(selectSource(id, source))}
         style={{
           marginLeft: "5px",
           height: "35px",

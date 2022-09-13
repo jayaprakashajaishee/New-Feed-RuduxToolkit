@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Checkbox } from "@mui/material";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
@@ -15,7 +15,7 @@ function SourceCard({ source, fav, id, selected }) {
       style={{ backgroundColor: selected && "#2666CF" }}
     >
       <div
-        onClick={() => dispatch(selectSource(id))}
+        onClick={() => dispatch(selectSource(id, source))}
         style={{
           marginLeft: "5px",
           height: "35px",

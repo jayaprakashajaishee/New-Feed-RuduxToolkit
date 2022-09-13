@@ -6,6 +6,9 @@ import {
   SOURCE_FAV,
   SOURCE_SELECT,
   CHANGE_THEME,
+  HEADLINE_REQUEST,
+  HEADLINE_REQUEST_SUCCESS,
+  HEADLINE_REQUEST_FAIL,
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
@@ -41,8 +44,9 @@ const themeChange = () => (dispatch) => {
   dispatch({ type: CHANGE_THEME });
 };
 
-const selectSource = (id) => (dispatch) => {
+const selectSource = (id, name) => (dispatch) => {
   dispatch({ type: SOURCE_SELECT, payload: id });
+  dispatch({ type: HEADLINE_REQUEST });
 
   var axios = require("axios");
 
@@ -55,9 +59,14 @@ const selectSource = (id) => (dispatch) => {
   axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+      dispatch({
+        type: HEADLINE_REQUEST_SUCCESS,
+        payload: { ...response.data, name },
+      });
     })
     .catch(function (error) {
       console.log(error);
+      dispatch({ type: HEADLINE_REQUEST_FAIL, payload: error });
     });
 };
 
