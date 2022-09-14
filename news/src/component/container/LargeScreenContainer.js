@@ -9,8 +9,8 @@ function LargeScreenContainer() {
   const theme = useSelector((state) => state.theme);
   return (
     <div
-      style={{ display: "flex", height: "calc(100vh - 50px)" }}
-      className={theme}
+      style={{ height: "calc(100vh - 50px)" }}
+      className={`largeScreenContainer ${theme} `}
     >
       <div
         style={{
