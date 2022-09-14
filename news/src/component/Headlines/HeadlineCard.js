@@ -9,7 +9,7 @@ function HeadlineCard({ headline }) {
     <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 1 }}
-      onClick={() => dispatch(selectHeadline(headline.title))}
+      onClick={() => dispatch(selectHeadline(headline))}
       className="sourceCard"
       style={{
         height: "auto",

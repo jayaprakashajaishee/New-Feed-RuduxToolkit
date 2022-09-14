@@ -10,6 +10,7 @@ import {
   HEADLINE_REQUEST_SUCCESS,
   HEADLINE_REQUEST_FAIL,
   HEADLINE_SELECT,
+  SHOW_NEWS,
 } from "../constants/constants";
 
 const getSources = () => (dispatch) => {
@@ -79,8 +80,9 @@ const selectSource = (id, name) => (dispatch) => {
     });
 };
 
-const selectHeadline = (title) => (dispatch) => {
-  dispatch({ type: HEADLINE_SELECT, payload: title });
+const selectHeadline = (headline) => (dispatch) => {
+  dispatch({ type: HEADLINE_SELECT, payload: headline });
+  dispatch({ type: SHOW_NEWS, payload: headline });
 };
 
 export { getSources, themeChange, sourceFav, selectSource, selectHeadline };

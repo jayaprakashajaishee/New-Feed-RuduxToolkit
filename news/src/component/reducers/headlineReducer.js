@@ -19,7 +19,7 @@ function headlineReducer(state = {}, action) {
         headlines: {
           ...state.headlines,
           articles: state.headlines.articles.map((article) =>
-            article.title === action.payload
+            article.title === action.payload.title
               ? { ...article, selected: true }
               : { ...article, selected: false }
           ),

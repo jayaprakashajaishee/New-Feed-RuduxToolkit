@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Sources from "../Sources/Sources";
 import FavouriteSources from "../FavouriteSources/FavouriteSources";
 import Headlines from "../Headlines/Headlines";
+import News from "../News.js/News";
 
 function LargeScreenContainer() {
   const theme = useSelector((state) => state.theme);
@@ -25,6 +26,16 @@ function LargeScreenContainer() {
       </div>
       <div style={{ width: "35%" }}>
         <Headlines />
+      </div>
+      <div
+        style={{
+          width: "45%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <News />
       </div>
     </div>
   );

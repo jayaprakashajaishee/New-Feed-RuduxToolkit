@@ -11,34 +11,44 @@ function Headlines() {
     <LoadingCircle />
   ) : error ? (
     <div>Error</div>
-  ) : (
-    headlines && (
+  ) : headlines ? (
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        height: "100%",
+      }}
+    >
+      <h2>{headlines.name}</h2>
       <div
         style={{
+          height: "100%",
           width: "100%",
+          overflow: "auto",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          height: "100%",
         }}
       >
-        <h2>{headlines.name}</h2>
-        <div
-          style={{
-            height: "100%",
-            width: "100%",
-            overflow: "auto",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          {headlines.articles.map((headline, i) => (
-            <HeadlineCard headline={headline} key={i} />
-          ))}
-        </div>
+        {headlines.articles.map((headline, i) => (
+          <HeadlineCard headline={headline} key={i} />
+        ))}
       </div>
-    )
+    </div>
+  ) : (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      Select a source
+    </div>
   );
 }
 
