@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import SourceCard from "./SourceCard";
 import { useSelector, useDispatch } from "react-redux";
-import { getSources, selectSource } from "../action/action";
+import { getSources } from "../reducers/sourceSlice";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
@@ -21,6 +21,8 @@ function Sources() {
   useEffect(() => {
     dispatch(getSources());
   }, [dispatch]);
+
+  console.log(Sources)
 
   return loading ? (
     <div>

@@ -20,7 +20,7 @@ import {
 function SourceDrawer() {
   const [drawer, setDrawer] = useState(false);
   const handleDrawer = () => setDrawer((prev) => !prev);
-  const theme = useSelector((state) => state.theme);
+  const { theme } = useSelector((state) => state.theme);
   return (
     <div style={{ marginLeft: "20px" }} className="sourceDrawerButton">
       <IconButton onClick={handleDrawer}>

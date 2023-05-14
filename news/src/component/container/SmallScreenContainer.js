@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function SmallScreenContainer() {
-  const theme = useSelector((state) => state.theme);
+  const { theme } = useSelector((state) => state.theme);
 
   return (
     <div

@@ -6,7 +6,7 @@ import Headlines from "../Headlines/Headlines";
 import News from "../News.js/News";
 
 function LargeScreenContainer() {
-  const theme = useSelector((state) => state.theme);
+  const { theme } = useSelector((state) => state.theme);
   return (
     <div
       style={{ height: "calc(100vh - 50px)" }}

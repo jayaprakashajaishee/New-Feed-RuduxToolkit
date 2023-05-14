@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 function News() {
   const news = useSelector((state) => state.news);
-  console.log(news);
   return !news.title ? (
     <div>Select a Headline</div>
   ) : (

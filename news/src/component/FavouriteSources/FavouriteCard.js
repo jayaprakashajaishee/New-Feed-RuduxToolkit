@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { selectSource } from "../action/action";
 
 function FavouriteCard({ source, id, selected }) {
-  const theme = useSelector((state) => state.theme);
+  const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   return (
     <motion.div
